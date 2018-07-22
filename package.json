@@ -6,8 +6,9 @@
 	"main": "index.js",
 	"author": "conraddavisjr <conraddavis@google.com>",
 	"scripts": {
-		"start": "webpack --config webpack.config.js",
-		"build": "webpack"
+		"build": "webpack",
+		"watch": "webpack --watch",
+    "start": "webpack-dev-server --open"
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^0.1.19",
@@ -16,6 +17,7 @@
 		"html-webpack-plugin": "^3.2.0",
 		"style-loader": "^0.21.0",
 		"webpack": "^4.16.1",
-		"webpack-cli": "^3.1.0"
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.4"
 	}
 }
