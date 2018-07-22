@@ -6,16 +6,21 @@ const webpack = require('webpack');
 module.exports = {
 	entry: './src/index.js',
 	output: {
-		filename: 'main.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'main.js'
 	},
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
-		new HtmlWebpackPlugin()
+		new HtmlWebpackPlugin({
+			title: 'Conrad Davis Jr.',
+			template: './src/index.html' // load a custom template
+		}),
+		new webpack.HotModuleReplacementPlugin()
 	],
 	devtool: 'inline-source-map',
 	devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true
   },
 	module: {
 		rules: [
@@ -27,7 +32,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(png|svg|jpg|gif)$/,
+				test: /\.(png|svg|jpg|gif|obj)$/,
 				use: [
 					'file-loader'
 				]

@@ -1,4 +1,11 @@
+var THREE = require('three');
+var OBJLoader = require('three-obj-loader');
+OBJLoader(THREE)
+var TWEEN = require('tween.js');
+var dat = require('dat.gui');
 import './style.css';
+import stageObj from './stage.obj';
+import particleImg from './particle.jpg';
 
 /*
  WEBGL World
@@ -163,7 +170,7 @@ function init() {
 	// load a resource
 	objLoader.load(
 		// resource URL
-		'models/stage.obj',
+		stageObj,
 		// called when resource is loaded
 		function (object) {
 			// enable shadows
@@ -288,7 +295,7 @@ function init() {
 		color: '#fff',
 		size: 1.5,
 		transparent: true,
-		map: new THREE.TextureLoader().load('assets/textures/particle.jpg'),
+		map: new THREE.TextureLoader().load(particleImg	),
 		blending: THREE.AdditiveBlending,
 		depthWrite: false
 	});
@@ -330,7 +337,7 @@ function init() {
 	document.getElementById('webgl').appendChild(renderer.domElement);
 
 	// orbiting controls
-	var controls = new THREE.OrbitControls( camera, renderer.domElement );
+	// var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 	// run renderer
 	update(renderer, scene, camera);
